@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">QuizApp</string>
+    <string name="name_question">Put your name here, please:</string>
+    <string name="name_hint">Your name</string>
+    <string name="scroll_question">The view which enables you to scroll is called:</string>
+    <string name="android_question">How is a mobile operating system developed by Google called?</string>
+    <string name="android_hint">Put the answer here</string>
+    <string name="primitives_question">What belongs to primitives in Java</string>
+    <string name="color_question">What is the hex code for color red based on the Material design?</string>
+    <string name="submit_button">Submit answers!</string>
 </resources>

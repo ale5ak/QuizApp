@@ -80,9 +80,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (points == 4) {
-            Toast.makeText(this, "You had everything correct!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "You had everything correct!", Toast.LENGTH_LONG).show();
         } else {
-            Toast.makeText(this, "You missed " + (4 - points) + " correct answers", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "You missed " + (4 - points) + " correct answers", Toast.LENGTH_LONG).show();
         }
 
         

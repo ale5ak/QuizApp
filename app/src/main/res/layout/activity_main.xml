@@ -15,14 +15,14 @@
             style="@style/TextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Name:" />
+            android:text="@string/name_question" />
 
         <EditText
             android:id="@+id/name_answer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="34dp"
-            android:hint="Your name"
+            android:hint="@string/name_hint"
             android:imeOptions="actionDone"
             android:inputType="text" />
 
@@ -30,7 +30,7 @@
             style="@style/TextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="The view where you can scroll is called:" />
+            android:text="@string/scroll_question" />
 
         <RadioGroup
             android:id="@+id/scrollview_answer"
@@ -64,14 +64,14 @@
             style="@style/TextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="How is a mobile operating system developed by Google called?" />
+            android:text="@string/android_question" />
 
         <EditText
             android:id="@+id/android_answer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="34dp"
-            android:hint="Put the answer here"
+            android:hint="@string/android_hint"
             android:imeOptions="actionDone"
             android:inputType="text" />
 
@@ -79,7 +79,7 @@
             style="@style/TextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="What belongs to primitives in Java" />
+            android:text="@string/primitives_question" />
 
         <CheckBox
             android:id="@+id/primitives_answer1"
@@ -117,7 +117,7 @@
             style="@style/TextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="What is based on the Material design the hex code for color red?" />
+            android:text="@string/color_question" />
 
         <RadioGroup
             android:id="@+id/color_answer"
@@ -152,11 +152,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:text="Submit answers!"
+            android:text="@string/submit_button"
             android:textColor="@android:color/white"
             android:textSize="16dp" />
 
-
     </LinearLayout>
-
 </ScrollView>
