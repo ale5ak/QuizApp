@@ -1,5 +1,6 @@
 package com.example.alise.quizapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,7 +12,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-
+    public static final String EXTRA_MESSAGE = "com.example.alise.quizapp.MESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,12 @@ public class MainActivity extends AppCompatActivity {
                 int colorAnswer = colorView.getCheckedRadioButtonId();
 
                 checkAnswers(nameAnswer, scrollAnswer, androidAnswer, primitivesAnswer, colorAnswer);
+
+                Intent intent = new Intent(v.getContext(), DisplayScoreActivity.class);
+                /*TODO: there will be sent the score of the last player*/
+                String message = "Changed text";
+                intent.putExtra(EXTRA_MESSAGE, message);
+                startActivity(intent);
             }
         });
 
