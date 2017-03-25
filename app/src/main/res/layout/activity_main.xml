@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.alise.quizapp.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            style="@style/TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Name:" />
+
+        <EditText
+            android:id="@+id/name_answer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="34dp"
+            android:hint="Your name"
+            android:imeOptions="actionDone"
+            android:inputType="text" />
+
+        <TextView
+            style="@style/TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="The view where you can scroll is called:" />
+
+        <RadioGroup
+            android:id="@+id/scrollview_answer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="34dp">
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ScrollView" />
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="LinearLayout" />
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CheckBox" />
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+
+        </RadioGroup>
+
+        <TextView
+            style="@style/TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="How is a mobile operating system developed by Google called?" />
+
+        <EditText
+            android:id="@+id/android_answer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="34dp"
+            android:hint="Put the answer here"
+            android:imeOptions="actionDone"
+            android:inputType="text" />
+
+        <TextView
+            style="@style/TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="What belongs to primitives in Java" />
+
+        <CheckBox
+            android:id="@+id/primitives_answer1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="int" />
+
+        <CheckBox
+            android:id="@+id/primitives_answer2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="String" />
+
+        <CheckBox
+            android:id="@+id/primitives_answer3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="long" />
+
+        <CheckBox
+            android:id="@+id/primitives_answer4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+        <CheckBox
+            android:id="@+id/primitives_answer5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="34dp"
+            android:text="boolean" />
+
+
+        <TextView
+            style="@style/TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="What is based on the Material design the hex code for color red?" />
+
+        <RadioGroup
+            android:id="@+id/color_answer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="34dp">
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="#F44336" />
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="#2196F3" />
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="#4CAF50" />
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="#795548" />
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/submit_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="Submit answers!"
+            android:textColor="@android:color/white"
+            android:textSize="16dp" />
+
+
+    </LinearLayout>
+
+</ScrollView>
