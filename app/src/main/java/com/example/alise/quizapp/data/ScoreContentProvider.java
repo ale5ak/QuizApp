@@ -22,7 +22,7 @@ public class ScoreContentProvider extends ContentProvider {
     @Override
     public boolean onCreate() {
         mDbHelper = new ScoreDbHelper(getContext());
-        return false;
+        return true;
     }
 
     @Nullable
