@@ -44,33 +44,34 @@ public class MainActivity extends AppCompatActivity {
                 primitivesAnswer[4] = primitivesView5.isChecked();
                 int colorAnswer = colorView.getCheckedRadioButtonId();
 
-                checkAnswers(nameAnswer, scrollAnswer, androidAnswer, primitivesAnswer, colorAnswer);
+                int points = checkAnswers(nameAnswer, scrollAnswer, androidAnswer, primitivesAnswer, colorAnswer);
 
-                Intent intent = new Intent(v.getContext(), DisplayScoreActivity.class);
-                /*TODO: there will be sent the score of the last player*/
-                String message = "Changed text";
-                intent.putExtra(EXTRA_MESSAGE, message);
-                startActivity(intent);
+                if (points != -1) {
+                    Intent intent = new Intent(v.getContext(), DisplayScoreActivity.class);
+                    int message = points;
+                    intent.putExtra(EXTRA_MESSAGE, message);
+                    startActivity(intent);
+                }
             }
         });
 
     }
 
-    private void checkAnswers(String nameAnswer, int scrollAnswer, String androidAnswer,
+    private int checkAnswers(String nameAnswer, int scrollAnswer, String androidAnswer,
                               boolean[] primitivesAnswer, int colorAnswer) {
         int points = 0;
 
         if (nameAnswer.length() == 0) {
             Toast.makeText(this, "Please fill in your name", Toast.LENGTH_SHORT).show();
-            return;
+            return -1;
         }
 
         if (scrollAnswer == -1 || androidAnswer.length() == 0 || colorAnswer == -1) {
             Toast.makeText(this, "Please fill in all the answers", Toast.LENGTH_SHORT).show();
-            return;
+            return -1;
         }
 
-        if (scrollAnswer == 1) {
+        if (scrollAnswer == R.id.scroll_view) {
             points++;
         }
 
@@ -82,17 +83,11 @@ public class MainActivity extends AppCompatActivity {
             points++;
         }
 
-        if (colorAnswer == 5) {
+        if (colorAnswer == R.id.red) {
             points++;
         }
 
-        if (points == 4) {
-            Toast.makeText(this, "You had everything correct!", Toast.LENGTH_LONG).show();
-        } else {
-            Toast.makeText(this, "You missed " + (4 - points) + " correct answers", Toast.LENGTH_LONG).show();
-        }
-
-        
+        return points;
         
     }
 

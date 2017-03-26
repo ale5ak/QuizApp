@@ -28,6 +28,7 @@ import java.util.List;
 public class DisplayScoreActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
     ScoreDbHelper mDbHelper;
     CustomPlayerAdapter mAdapter;
+    int points;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,11 @@ public class DisplayScoreActivity extends AppCompatActivity implements LoaderMan
 
         // Get the Intent that started this activity and extract the string
         Intent intent = getIntent();
-        String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+        points = intent.getIntExtra(MainActivity.EXTRA_MESSAGE, -1);
+        String percentPoints = "" + (points * 100 / 4);
+        String endOfTheSentence = points == 0 ? "." : "!";
+
+        Toast.makeText(this, "You achieved " + percentPoints + " % of the correct answers" + endOfTheSentence, Toast.LENGTH_SHORT).show();
 
         mDbHelper = new ScoreDbHelper(this);
 
