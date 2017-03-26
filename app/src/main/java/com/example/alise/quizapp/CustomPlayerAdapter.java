@@ -19,13 +19,13 @@ public class CustomPlayerAdapter extends CursorAdapter {
     private LayoutInflater mLayoutInflater;
 
     public CustomPlayerAdapter(Context context, Cursor c) {
-        super (context, c);
+        super(context, c);
         mLayoutInflater = LayoutInflater.from(context);
     }
 
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
-        View view = mLayoutInflater.inflate(R.layout.player, null); //maybe there should be condition if(view==null)
+        View view = mLayoutInflater.inflate(R.layout.player, null);
         return view;
     }
 

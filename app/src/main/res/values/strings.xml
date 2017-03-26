@@ -10,4 +10,17 @@
     <string name="submit_button">Submit answers!</string>
     <string name="score_title">Score results</string>
     <string name="show_results">Show results</string>
+    <string name="empty_list">There are no scores yet.</string>
+    <string name="scroll_view">ScrollView</string>
+    <string name="linear_layout">LinearLayout</string>
+    <string name="check_box">CheckBox</string>
+    <string name="text_view">TextView</string>
+    <string name="int__primitive">int</string>
+    <string name="string">String</string>
+    <string name="long_primitive">long</string>
+    <string name="boolean_primitive">boolean</string>
+    <string name="hex_red">#F44336</string>
+    <string name="hex_blue">#2196F3</string>
+    <string name="hex_green">#4CAF50</string>
+    <string name="hex_brown">#795548</string>
 </resources>

@@ -26,7 +26,8 @@ public class ScoreContentProvider extends ContentProvider {
 
     @Nullable
     @Override
-    public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection, @Nullable String[] selectionArgs, @Nullable String sortOrder) {
+    public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection,
+                        @Nullable String[] selectionArgs, @Nullable String sortOrder) {
         SQLiteDatabase db = mDbHelper.getReadableDatabase();
 
         // SQLiteQueryBuilder is a helper class that creates the
@@ -70,7 +71,8 @@ public class ScoreContentProvider extends ContentProvider {
     }
 
     @Override
-    public int update(@NonNull Uri uri, @Nullable ContentValues values, @Nullable String selection, @Nullable String[] selectionArgs) {
+    public int update(@NonNull Uri uri, @Nullable ContentValues values, @Nullable String selection,
+                      @Nullable String[] selectionArgs) {
         return 0;
     }
 }

@@ -7,7 +7,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="10dp">
 
@@ -42,25 +42,25 @@
                 android:id="@+id/scroll_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="ScrollView" />
+                android:text="@string/scroll_view" />
 
             <RadioButton
                 android:id="@+id/linear_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="LinearLayout" />
+                android:text="@string/linear_layout" />
 
             <RadioButton
                 android:id="@+id/check_box"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="CheckBox" />
+                android:text="@string/check_box" />
 
             <RadioButton
                 android:id="@+id/text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="@string/text_view" />
 
         </RadioGroup>
 
@@ -89,32 +89,32 @@
             android:id="@+id/primitives_answer1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="int" />
+            android:text="@string/int__primitive" />
 
         <CheckBox
             android:id="@+id/primitives_answer2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="String" />
+            android:text="@string/string" />
 
         <CheckBox
             android:id="@+id/primitives_answer3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="long" />
+            android:text="@string/long_primitive" />
 
         <CheckBox
             android:id="@+id/primitives_answer4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="@string/text_view" />
 
         <CheckBox
             android:id="@+id/primitives_answer5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="34dp"
-            android:text="boolean" />
+            android:text="@string/boolean_primitive" />
 
 
         <TextView
@@ -133,25 +133,25 @@
                 android:id="@+id/red"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="#F44336" />
+                android:text="@string/hex_red" />
 
             <RadioButton
                 android:id="@+id/blue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="#2196F3" />
+                android:text="@string/hex_blue" />
 
             <RadioButton
                 android:id="@+id/green"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="#4CAF50" />
+                android:text="@string/hex_green" />
 
             <RadioButton
                 android:id="@+id/brown"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="#795548" />
+                android:text="@string/hex_brown" />
 
         </RadioGroup>
 
@@ -162,7 +162,7 @@
             android:padding="16dp"
             android:text="@string/submit_button"
             android:textColor="@android:color/white"
-            android:textSize="16dp" />
+            android:textSize="16sp" />
 
     </LinearLayout>
 </ScrollView>

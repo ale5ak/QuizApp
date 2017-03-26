@@ -8,11 +8,12 @@ import android.provider.BaseColumns;
  */
 
 public final class ScoreContract {
+    public static final Uri CONTENT_URI = Uri.parse("content://com.example.alise.quizapp.provider");
+
     // To prevent someone from accidentally instantiating the contract class,
     // make the constructor private.
-    private ScoreContract() {}
-
-    public static final Uri CONTENT_URI =  Uri.parse("content://com.example.alise.quizapp.provider");
+    private ScoreContract() {
+    }
 
     /* Inner class that defines the table contents */
     public static class ScoreEntry implements BaseColumns {

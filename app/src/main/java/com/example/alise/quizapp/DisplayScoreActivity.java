@@ -25,7 +25,6 @@ public class DisplayScoreActivity extends AppCompatActivity implements LoaderMan
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_score);
 
-        // Get the Intent that started this activity and extract the string
         Intent intent = getIntent();
         int points = intent.getIntExtra(MainActivity.EXTRA_MESSAGE_SCORE, -1);
 
@@ -43,7 +42,8 @@ public class DisplayScoreActivity extends AppCompatActivity implements LoaderMan
             String nameAnswer = intent.getStringExtra(MainActivity.EXTRA_MESSAGE_NAME);
             String percentPoints = "" + (points * 100 / 4);
             String endOfTheSentence = points == 0 ? "." : "!";
-            Toast.makeText(this, "You achieved " + percentPoints + " % of the correct answers" + endOfTheSentence, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "You achieved " + percentPoints + " % of the correct answers"
+                    + endOfTheSentence, Toast.LENGTH_SHORT).show();
             writeToDatabase(nameAnswer, points);
         }
     }
@@ -57,7 +57,6 @@ public class DisplayScoreActivity extends AppCompatActivity implements LoaderMan
         // Insert the new row, returning the primary key value of the new row
         getContentResolver().insert(ScoreContract.CONTENT_URI, values);
     }
-
 
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         // This is called when a new Loader needs to be created.  This

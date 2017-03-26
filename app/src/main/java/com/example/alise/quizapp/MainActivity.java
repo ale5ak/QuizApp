@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private int checkAnswers(String nameAnswer, int scrollAnswer, String androidAnswer,
-                              boolean[] primitivesAnswer, int colorAnswer) {
+                             boolean[] primitivesAnswer, int colorAnswer) {
         int points = 0;
 
         if (nameAnswer.length() == 0) {
@@ -90,15 +90,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return points;
-        
     }
 
-    private static boolean areAllTrue(boolean[] array)
-    {
-        for(boolean b : array) if(!b) return false;
+    private boolean areAllTrue(boolean[] array) {
+        for (boolean b : array) if (!b) return false;
         return true;
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -113,7 +110,4 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         return super.onOptionsItemSelected(item);
     }
-
-
-
 }
