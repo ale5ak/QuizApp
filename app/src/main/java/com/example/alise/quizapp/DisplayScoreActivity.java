@@ -13,6 +13,8 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -26,7 +28,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DisplayScoreActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
-    ScoreDbHelper mDbHelper;
     CustomPlayerAdapter mAdapter;
 
     /*TODO: put uri into the ScoreContract file*/
@@ -39,25 +40,22 @@ public class DisplayScoreActivity extends AppCompatActivity implements LoaderMan
 
         // Get the Intent that started this activity and extract the string
         Intent intent = getIntent();
-        String nameAnswer = intent.getStringExtra(MainActivity.EXTRA_MESSAGE_NAME);
         int points = intent.getIntExtra(MainActivity.EXTRA_MESSAGE_SCORE, -1);
-        String percentPoints = "" + (points * 100 / 4);
-        String endOfTheSentence = points == 0 ? "." : "!";
-
-        Toast.makeText(this, "You achieved " + percentPoints + " % of the correct answers" + endOfTheSentence, Toast.LENGTH_SHORT).show();
-
-        mDbHelper = new ScoreDbHelper(this);
 
         mAdapter = new CustomPlayerAdapter(this, null);
-
         ListView listView = (ListView) findViewById(R.id.list_view);
         listView.setAdapter(mAdapter);
 
-        // Prepare the loader.  Either re-connect with an existing one,
-        // or start a new one.
+        // Prepare the loader.  Either re-connect with an existing one, or start a new one.
         getLoaderManager().initLoader(0, null, this);
 
-        writeToDatabase(nameAnswer, points);
+        if (points != -1) {
+            String nameAnswer = intent.getStringExtra(MainActivity.EXTRA_MESSAGE_NAME);
+            String percentPoints = "" + (points * 100 / 4);
+            String endOfTheSentence = points == 0 ? "." : "!";
+            Toast.makeText(this, "You achieved " + percentPoints + " % of the correct answers" + endOfTheSentence, Toast.LENGTH_SHORT).show();
+            writeToDatabase(nameAnswer, points);
+        }
     }
 
     private void writeToDatabase(String nameAnswer, int points) {

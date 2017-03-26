@@ -8,4 +8,6 @@
     <string name="primitives_question">What belongs to primitives in Java</string>
     <string name="color_question">What is the hex code for color red based on the Material design?</string>
     <string name="submit_button">Submit answers!</string>
+    <string name="score_title">Score results</string>
+    <string name="show_results">Show results</string>
 </resources>

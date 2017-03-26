@@ -3,11 +3,12 @@ package com.example.alise.quizapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -97,4 +98,22 @@ public class MainActivity extends AppCompatActivity {
         for(boolean b : array) if(!b) return false;
         return true;
     }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu_score; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_score, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent = new Intent(this, DisplayScoreActivity.class);
+        startActivity(intent);
+        return super.onOptionsItemSelected(item);
+    }
+
+
+
 }
