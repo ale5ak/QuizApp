@@ -1,5 +1,6 @@
 package com.example.alise.quizapp.data;
 
+import android.net.Uri;
 import android.provider.BaseColumns;
 
 /**
@@ -10,6 +11,8 @@ public final class ScoreContract {
     // To prevent someone from accidentally instantiating the contract class,
     // make the constructor private.
     private ScoreContract() {}
+
+    public static final Uri CONTENT_URI =  Uri.parse("content://com.example.alise.quizapp.provider");
 
     /* Inner class that defines the table contents */
     public static class ScoreEntry implements BaseColumns {

@@ -8,30 +8,17 @@ import android.content.Intent;
 import android.content.Loader;
 
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.Adapter;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.alise.quizapp.data.ScoreDbHelper;
+import com.example.alise.quizapp.data.ScoreContract;
 import com.example.alise.quizapp.data.ScoreContract.ScoreEntry;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class DisplayScoreActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
     CustomPlayerAdapter mAdapter;
-
-    /*TODO: put uri into the ScoreContract file*/
-    Uri uri =  Uri.parse("content://com.example.alise.quizapp.provider");   //ScoreContract.CONTENT_URI;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +55,7 @@ public class DisplayScoreActivity extends AppCompatActivity implements LoaderMan
         values.put(ScoreEntry.COLUMN_SCORE, points);
 
         // Insert the new row, returning the primary key value of the new row
-        getContentResolver().insert(uri, values);
+        getContentResolver().insert(ScoreContract.CONTENT_URI, values);
     }
 
 
@@ -86,13 +73,12 @@ public class DisplayScoreActivity extends AppCompatActivity implements LoaderMan
 
         // Now create and return a CursorLoader that will take care of
         // creating a Cursor for the data being displayed.
-        return new CursorLoader(this, uri, projection, null, null, ScoreEntry.COLUMN_SCORE + " DESC");
+        return new CursorLoader(this, ScoreContract.CONTENT_URI, projection, null, null, ScoreEntry.COLUMN_SCORE + " DESC");
     }
 
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         // Swap the new cursor in.  (The framework will take care of closing the
         // old cursor once we return.)
-
         mAdapter.swapCursor(data);
     }
 
