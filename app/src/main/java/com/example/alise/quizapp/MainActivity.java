@@ -12,7 +12,8 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    public static final String EXTRA_MESSAGE = "com.example.alise.quizapp.MESSAGE";
+    public static final String EXTRA_MESSAGE_NAME = "com.example.alise.quizapp.MESSAGE_NAME";
+    public static final String EXTRA_MESSAGE_SCORE = "com.example.alise.quizapp.MESSAGE_SCORE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
 
                 if (points != -1) {
                     Intent intent = new Intent(v.getContext(), DisplayScoreActivity.class);
-                    int message = points;
-                    intent.putExtra(EXTRA_MESSAGE, message);
+                    intent.putExtra(EXTRA_MESSAGE_NAME, nameAnswer);
+                    intent.putExtra(EXTRA_MESSAGE_SCORE, points);
                     startActivity(intent);
                 }
             }

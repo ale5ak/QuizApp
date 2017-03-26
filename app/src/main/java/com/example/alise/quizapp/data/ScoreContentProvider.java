@@ -59,6 +59,9 @@ public class ScoreContentProvider extends ContentProvider {
     @Nullable
     @Override
     public Uri insert(@NonNull Uri uri, @Nullable ContentValues values) {
+        SQLiteDatabase db = mDbHelper.getReadableDatabase();
+        db.insert(ScoreEntry.TABLE_NAME, null, values);
+        getContext().getContentResolver().notifyChange(uri, null);
         return null;
     }
 

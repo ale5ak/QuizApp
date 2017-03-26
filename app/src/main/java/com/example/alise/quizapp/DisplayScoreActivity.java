@@ -28,7 +28,9 @@ import java.util.List;
 public class DisplayScoreActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
     ScoreDbHelper mDbHelper;
     CustomPlayerAdapter mAdapter;
-    int points;
+
+    /*TODO: put uri into the ScoreContract file*/
+    Uri uri =  Uri.parse("content://com.example.alise.quizapp.provider");   //ScoreContract.CONTENT_URI;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +39,8 @@ public class DisplayScoreActivity extends AppCompatActivity implements LoaderMan
 
         // Get the Intent that started this activity and extract the string
         Intent intent = getIntent();
-        points = intent.getIntExtra(MainActivity.EXTRA_MESSAGE, -1);
+        String nameAnswer = intent.getStringExtra(MainActivity.EXTRA_MESSAGE_NAME);
+        int points = intent.getIntExtra(MainActivity.EXTRA_MESSAGE_SCORE, -1);
         String percentPoints = "" + (points * 100 / 4);
         String endOfTheSentence = points == 0 ? "." : "!";
 
@@ -54,21 +57,17 @@ public class DisplayScoreActivity extends AppCompatActivity implements LoaderMan
         // or start a new one.
         getLoaderManager().initLoader(0, null, this);
 
-        //writeToDatabase();
+        writeToDatabase(nameAnswer, points);
     }
 
-    private void writeToDatabase() {
-        // Gets the data repository in write mode
-        SQLiteDatabase db = mDbHelper.getWritableDatabase();
-
+    private void writeToDatabase(String nameAnswer, int points) {
         // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
-        values.put(ScoreEntry.COLUMN_NAME, "Aleš");
-        values.put(ScoreEntry.COLUMN_SCORE, 12);
+        values.put(ScoreEntry.COLUMN_NAME, nameAnswer);
+        values.put(ScoreEntry.COLUMN_SCORE, points);
 
         // Insert the new row, returning the primary key value of the new row
-        long newRowId = db.insert(ScoreEntry.TABLE_NAME, null, values);
-        Toast.makeText(this, "" + newRowId, Toast.LENGTH_SHORT).show();
+        getContentResolver().insert(uri, values);
     }
 
 
@@ -83,9 +82,6 @@ public class DisplayScoreActivity extends AppCompatActivity implements LoaderMan
                 ScoreEntry.COLUMN_NAME,
                 ScoreEntry.COLUMN_SCORE
         };
-
-        /*TODO: put uri into the ScoreContract file*/
-        Uri uri =  Uri.parse("content://com.example.alise.quizapp.provider");   //ScoreContract.CONTENT_URI;
 
         // Now create and return a CursorLoader that will take care of
         // creating a Cursor for the data being displayed.
