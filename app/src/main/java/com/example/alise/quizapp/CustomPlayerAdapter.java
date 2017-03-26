@@ -1,13 +1,18 @@
 package com.example.alise.quizapp;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CursorAdapter;
 import android.widget.TextView;
+
+import com.example.alise.quizapp.data.ScoreContract.ScoreEntry;
 
 import java.util.ArrayList;
 
@@ -15,30 +20,30 @@ import java.util.ArrayList;
  * Created by Aleš Pros on 25.03.2017.
  */
 
-public class CustomPlayerAdapter extends ArrayAdapter<Player> {
+public class CustomPlayerAdapter extends CursorAdapter {
+    private LayoutInflater mLayoutInflater;
 
-    public CustomPlayerAdapter(Context context, int resource, ArrayList<Player> objects) {
-        super (context, 0, objects);
+    public CustomPlayerAdapter(Context context, Cursor c) {
+        super (context, c);
+        mLayoutInflater = LayoutInflater.from(context);
     }
 
-    public View getView(int position, View convertView, ViewGroup parent) {
-        View view = convertView;
+    @Override
+    public View newView(Context context, Cursor cursor, ViewGroup parent) {
+        View view = mLayoutInflater.inflate(R.layout.player, null); //maybe there should be condition if(view==null)
+        return view;
+    }
 
-        if (view == null) {
-            LayoutInflater vi = LayoutInflater.from(getContext());
-            view = vi.inflate(R.layout.player, null);
-        }
-
-        Player player = getItem(position);
-
+    @Override
+    public void bindView(View view, Context context, Cursor cursor) {
         TextView playerName = (TextView) view.findViewById(R.id.player_name);
         TextView playerScore = (TextView) view.findViewById(R.id.player_score);
 
-        playerName.setText(player.getName());
-        playerScore.setText("" + player.getScore());
+        String playerNameValue = cursor.getString(cursor.getColumnIndexOrThrow(ScoreEntry.COLUMN_NAME));
+        int playerScoreInt = cursor.getInt(cursor.getColumnIndexOrThrow(ScoreEntry.COLUMN_SCORE));
+        String playerScoreValue = "" + (playerScoreInt * 100 / 4) + " %";
 
-        return view;
-
+        playerName.setText(playerNameValue);
+        playerScore.setText(playerScoreValue);
     }
-
 }

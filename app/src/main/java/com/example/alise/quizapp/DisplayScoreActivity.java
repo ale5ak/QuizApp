@@ -1,11 +1,18 @@
 package com.example.alise.quizapp;
 
+import android.app.LoaderManager;
 import android.content.ContentValues;
+
+import android.content.CursorLoader;
 import android.content.Intent;
+import android.content.Loader;
+
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -18,8 +25,9 @@ import com.example.alise.quizapp.data.ScoreContract.ScoreEntry;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DisplayScoreActivity extends AppCompatActivity {
+public class DisplayScoreActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
     ScoreDbHelper mDbHelper;
+    CustomPlayerAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +39,17 @@ public class DisplayScoreActivity extends AppCompatActivity {
         String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
 
         mDbHelper = new ScoreDbHelper(this);
-        readFromDatabase();
+
+        mAdapter = new CustomPlayerAdapter(this, null);
+
+        ListView listView = (ListView) findViewById(R.id.list_view);
+        listView.setAdapter(mAdapter);
+
+        // Prepare the loader.  Either re-connect with an existing one,
+        // or start a new one.
+        getLoaderManager().initLoader(0, null, this);
+
+        //writeToDatabase();
     }
 
     private void writeToDatabase() {
@@ -48,44 +66,37 @@ public class DisplayScoreActivity extends AppCompatActivity {
         Toast.makeText(this, "" + newRowId, Toast.LENGTH_SHORT).show();
     }
 
-    private void readFromDatabase() {
-        SQLiteDatabase db = mDbHelper.getReadableDatabase();
 
-        // Define a projection that specifies which columns from the database
-        // you will actually use after this query.
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        // This is called when a new Loader needs to be created.  This
+        // sample only has one Loader, so we don't care about the ID.
+        // First, pick the base URI to use depending on whether we are
+        // currently filtering.
+
         String[] projection = {
                 ScoreEntry._ID,
                 ScoreEntry.COLUMN_NAME,
                 ScoreEntry.COLUMN_SCORE
         };
 
-        // How you want the results sorted in the resulting Cursor
-        String sortOrder =
-                ScoreEntry.COLUMN_SCORE + " DESC";
+        /*TODO: put uri into the ScoreContract file*/
+        Uri uri =  Uri.parse("content://com.example.alise.quizapp.provider");   //ScoreContract.CONTENT_URI;
 
-        Cursor cursor = db.query(
-                ScoreEntry.TABLE_NAME,                    // The table to query
-                projection,                               // The columns to return
-                null,                                     // The columns for the WHERE clause
-                null,                                     // The values for the WHERE clause
-                null,                                     // don't group the rows
-                null,                                     // don't filter by row groups
-                sortOrder                                 // The sort order
-        );
+        // Now create and return a CursorLoader that will take care of
+        // creating a Cursor for the data being displayed.
+        return new CursorLoader(this, uri, projection, null, null, ScoreEntry.COLUMN_SCORE + " DESC");
+    }
 
-        ArrayList<Player> players = new ArrayList<Player>();
-        while(cursor.moveToNext()) {
-            String name = cursor.getString(cursor.getColumnIndexOrThrow(ScoreEntry.COLUMN_NAME));
-            int score = cursor.getInt(cursor.getColumnIndexOrThrow(ScoreEntry.COLUMN_SCORE));
-            players.add(new Player(name, score));
-        }
-        cursor.close();
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        // Swap the new cursor in.  (The framework will take care of closing the
+        // old cursor once we return.)
+        mAdapter.swapCursor(data);
+    }
 
-        CustomPlayerAdapter adapter = new CustomPlayerAdapter(this, android.R.layout.simple_list_item_1, players);
-
-        ListView listView = (ListView) findViewById(R.id.list_view);
-        listView.setAdapter(adapter);
-
-
+    public void onLoaderReset(Loader<Cursor> loader) {
+        // This is called when the last Cursor provided to onLoadFinished()
+        // above is about to be closed.  We need to make sure we are no
+        // longer using it.
+        mAdapter.swapCursor(null);
     }
 }

@@ -23,6 +23,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
+
+        <provider
+            android:name="com.example.alise.quizapp.data.ScoreContentProvider"
+            android:authorities="com.example.alise.quizapp.provider" />
+
     </application>
 
 </manifest>
