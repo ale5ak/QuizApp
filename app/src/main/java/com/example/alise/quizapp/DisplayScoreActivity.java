@@ -46,6 +46,9 @@ public class DisplayScoreActivity extends AppCompatActivity implements LoaderMan
         ListView listView = (ListView) findViewById(R.id.list_view);
         listView.setAdapter(mAdapter);
 
+        TextView emptyTextView = (TextView) findViewById(R.id.empty_view_placeholder);
+        listView.setEmptyView(emptyTextView);
+
         // Prepare the loader.  Either re-connect with an existing one, or start a new one.
         getLoaderManager().initLoader(0, null, this);
 
@@ -89,6 +92,7 @@ public class DisplayScoreActivity extends AppCompatActivity implements LoaderMan
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         // Swap the new cursor in.  (The framework will take care of closing the
         // old cursor once we return.)
+
         mAdapter.swapCursor(data);
     }
 
