@@ -27,6 +27,7 @@ public class DisplayScoreActivity extends AppCompatActivity implements LoaderMan
 
         Intent intent = getIntent();
         int points = intent.getIntExtra(MainActivity.EXTRA_MESSAGE_SCORE, -1);
+        intent.putExtra(MainActivity.EXTRA_MESSAGE_SCORE, -1);
 
         mAdapter = new CustomPlayerAdapter(this, null);
         ListView listView = (ListView) findViewById(R.id.list_view);
