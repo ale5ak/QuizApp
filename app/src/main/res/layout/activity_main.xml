@@ -6,159 +6,126 @@
     tools:context="com.example.alise.quizapp.MainActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/width_height"
         android:orientation="vertical"
         android:padding="10dp">
 
         <TextView
             style="@style/TextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:text="@string/name_question" />
 
         <EditText
             android:id="@+id/name_answer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/EditText"
             android:layout_marginBottom="34dp"
-            android:hint="@string/name_hint"
-            android:imeOptions="actionDone"
-            android:inputType="text" />
+            android:hint="@string/name_hint" />
 
         <TextView
             style="@style/TextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:text="@string/scroll_question" />
 
         <RadioGroup
             android:id="@+id/scrollview_answer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/width_height"
             android:layout_marginBottom="34dp">
 
             <RadioButton
                 android:id="@+id/scroll_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/width_height"
                 android:text="@string/scroll_view" />
 
             <RadioButton
                 android:id="@+id/linear_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/width_height"
                 android:text="@string/linear_layout" />
 
             <RadioButton
                 android:id="@+id/check_box"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/width_height"
                 android:text="@string/check_box" />
 
             <RadioButton
                 android:id="@+id/text_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/width_height"
                 android:text="@string/text_view" />
 
         </RadioGroup>
 
         <TextView
             style="@style/TextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:text="@string/android_question" />
 
         <EditText
             android:id="@+id/android_answer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/EditText"
             android:layout_marginBottom="34dp"
-            android:hint="@string/android_hint"
-            android:imeOptions="actionDone"
-            android:inputType="text" />
+            android:hint="@string/android_hint" />
 
         <TextView
             style="@style/TextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:text="@string/primitives_question" />
 
         <CheckBox
             android:id="@+id/primitives_answer1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/width_height"
             android:text="@string/int__primitive" />
 
         <CheckBox
             android:id="@+id/primitives_answer2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/width_height"
             android:text="@string/string" />
 
         <CheckBox
             android:id="@+id/primitives_answer3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/width_height"
             android:text="@string/long_primitive" />
 
         <CheckBox
             android:id="@+id/primitives_answer4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/width_height"
             android:text="@string/text_view" />
 
         <CheckBox
             android:id="@+id/primitives_answer5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/width_height"
             android:layout_marginBottom="34dp"
             android:text="@string/boolean_primitive" />
 
 
         <TextView
             style="@style/TextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:text="@string/color_question" />
 
         <RadioGroup
             android:id="@+id/color_answer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/width_height"
             android:layout_marginBottom="34dp">
 
             <RadioButton
                 android:id="@+id/red"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/width_height"
                 android:text="@string/hex_red" />
 
             <RadioButton
                 android:id="@+id/blue"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/width_height"
                 android:text="@string/hex_blue" />
 
             <RadioButton
                 android:id="@+id/green"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/width_height"
                 android:text="@string/hex_green" />
 
             <RadioButton
                 android:id="@+id/brown"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/width_height"
                 android:text="@string/hex_brown" />
 
         </RadioGroup>
 
         <Button
             android:id="@+id/submit_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/width_height"
             android:padding="16dp"
             android:text="@string/submit_button"
             android:textColor="@android:color/white"

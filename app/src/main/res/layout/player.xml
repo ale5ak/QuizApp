@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    style="@style/width_height"
     android:background="@color/colorPrimary"
     android:orientation="horizontal">
 
@@ -13,38 +12,25 @@
 
         <TextView
             android:id="@+id/player_score_bar_left"
-            style="@style/TextView"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            style="@style/score_bar"
             android:background="@color/colorPrimaryDark"
             android:padding="10dp" />
 
         <TextView
             android:id="@+id/player_score_bar_right"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
+            style="@style/score_bar" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/player_name"
-        style="@style/TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:textColor="@android:color/white"
+        style="@style/player_text"
         tools:text="Name" />
 
     <TextView
         android:id="@+id/player_score"
-        style="@style/TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/player_text"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:padding="10dp"
-        android:textColor="@android:color/white"
         tools:text="50%" />
 
 </RelativeLayout>
